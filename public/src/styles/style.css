@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+body {
+  padding: 50px;
+  background-color: transparent;
+  display: flex;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  display: flex;
+  width: 250px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-nav {
+  position: relative;
+  overflow: hidden;
+  width: max-content;
+  padding: 12px 40px;
+  border-radius: 102px;
+  border: 1px solid #b8860b;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(50deg, #272727 60%, #ffd900aa 125%);
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(70deg, #ffd90056 0%, #272727 40%);
+  opacity: 0;
+  transition: opacity 1s ease;
+  z-index: 0;
+}
+
+.btn-nav.closed:hover::before {
+  opacity: 1;
+}
+
+.btn-nav span {
+  color: #fff;
+  font-style: normal;
+  z-index: 1;
+  user-select: none;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: center;
+  line-height: 105%;
+  letter-spacing: -0.28px;
+}
+
+.btn-nav span::before {
+  content: "";
+  background-image: url("../img/gamepad.svg");
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 8px;
+  left: 10px;
+}
+
+.btn-nav span::after {
+  content: "";
+  background-image: url("../img/arrow.svg");
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  top: 8px;
+  right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.btn-nav.open span::after {
+  transform: rotate(180deg);
+}
+
+.btn-nav.open {
+  background-image: linear-gradient(50deg, #ffd90089 0%, #272727 95%);
+  transition: transform 0.3s ease;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  transform: translateY(-10px);
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #9a9a9a;
+  border-radius: 20px;
+  background: rgba(14, 14, 14, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.gameCard {
+  width: 200px;
+  height: 150px;
+  border-radius: 12px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  transition: background-size 100ms ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible !important;
+  transform: translateY(0);
+}
+
+.valorant {
+  background-image: url("../img/valorant.png");
+}
+.valorant:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 25px;
+  transform: translate(-50%, -50%);
+  background-image: url("../img/valTitle.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.dota2 {
+  background-image: url("../img/dota2.png");
+}
+.dota2:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 25px;
+  transform: translate(-50%, -50%);
+  background-image: url("../img/dotaTitle.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.cs2 {
+  background-image: url("../img/cs2.png");
+}
+.cs2::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  background-image: url("../img/cs2Title.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.cs2::before {
+  content: "Скоро";
+  font-family: "Rubik";
+  font-weight: 500;
+  color: #1a1a1a;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 999;
+  font-size: 0.8em;
+  padding: 4px 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 100ms;
+}
+
+.gameCard.valorant:hover,
+.gameCard.dota2:hover {
+  .overlay {
+    opacity: 0.5;
+  }
+  background-size: 110%;
+  cursor: pointer;
+}
